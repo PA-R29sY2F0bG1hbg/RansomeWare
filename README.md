@@ -13,7 +13,7 @@ This ransomware made for learning and awareness about security/cryptography. #>
 Environement:
 -------------
 - Ubuntu 18.4 | Tested | No compile
-- Windows 10 | Tested | Compiled
+- Windows 10 | Tested | Compiled | Sophos End Point Security : Pass | Windows Security: Pass
 - Pycharm
 - Python 3.6
 
